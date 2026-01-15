@@ -1,0 +1,31 @@
+2026-01-15 00:53:45 [INFO] o.t.i.Utils - [TestNG] Running:
+  /Users/omapayi/Library/Caches/JetBrains/IdeaIC2024.1/temp-testng-customsuite.xml
+
+2026-01-15 00:53:45 [INFO] u.LoggerUtil - Configuration file loaded successfully from classpath.
+2026-01-15 00:53:45 [INFO] u.LoggerUtil - BEFORE ALL SCENARIO HOOK CALLED:
+2026-01-15 00:53:45 [INFO] u.LoggerUtil - Log directory setup complete.
+2026-01-15 00:53:45 [INFO] u.LoggerUtil - /Users/omapayi/Downloads/com.saucedemo/test-output
+2026-01-15 00:53:45 [INFO] u.LoggerUtil - >> BEFORE SCENARIO HOOK CALLED:
+2026-01-15 00:53:45 [INFO] u.LoggerUtil - Starting scenario: Standard user adds the highest priced item to the cart
+2026-01-15 00:53:45 [INFO] u.LoggerUtil - Initializing WebDriver for browser: safari
+2026-01-15 00:53:45 [INFO] u.LoggerUtil - Using Remote WebDriver: false
+2026-01-15 00:53:47 [INFO] u.LoggerUtil - WebDriver initialized successfully for thread.
+2026-01-15 00:53:47 [INFO] u.LoggerUtil - Element is displayed: By.className: login_logo
+2026-01-15 00:53:47 [INFO] u.LoggerUtil - Retrieved text 'Swag Labs' from By.className: login_logo
+2026-01-15 00:53:47 [INFO] u.LoggerUtil - Entered text 'standard_user' into By.id: user-name
+2026-01-15 00:53:47 [INFO] u.LoggerUtil - Entered text 'secret_sauce' into By.id: password
+2026-01-15 00:53:47 [INFO] u.LoggerUtil - Clicked on element By.id: login-button
+2026-01-15 00:53:47 [INFO] u.LoggerUtil - Element is displayed: By.className: title
+2026-01-15 00:53:47 [INFO] u.LoggerUtil - Retrieved text 'Products' from By.className: title
+2026-01-15 00:53:47 [INFO] u.LoggerUtil - Retrieved text '$29.99' from By.cssSelector: .inventory_list > .inventory_item:nth-child(1) div.pricebar .inventory_item_price
+2026-01-15 00:53:47 [INFO] u.LoggerUtil - Retrieved text '$9.99' from By.cssSelector: .inventory_list > .inventory_item:nth-child(2) div.pricebar .inventory_item_price
+2026-01-15 00:53:47 [INFO] u.LoggerUtil - Retrieved text '$15.99' from By.cssSelector: .inventory_list > .inventory_item:nth-child(3) div.pricebar .inventory_item_price
+2026-01-15 00:53:47 [INFO] u.LoggerUtil - Retrieved text '$49.99' from By.cssSelector: .inventory_list > .inventory_item:nth-child(4) div.pricebar .inventory_item_price
+2026-01-15 00:53:47 [INFO] u.LoggerUtil - Retrieved text '$7.99' from By.cssSelector: .inventory_list > .inventory_item:nth-child(5) div.pricebar .inventory_item_price
+2026-01-15 00:53:47 [INFO] u.LoggerUtil - Retrieved text '$15.99' from By.cssSelector: .inventory_list > .inventory_item:nth-child(6) div.pricebar .inventory_item_price
+2026-01-15 00:53:47 [INFO] u.LoggerUtil - Retrieved text 'Sauce Labs Fleece Jacket' from By.cssSelector: .inventory_list > .inventory_item:nth-child(4) .inventory_item_name[data-test='inventory-item-name']
+2026-01-15 00:53:47 [INFO] u.LoggerUtil - Highest priced item found: index=4, name='Sauce Labs Fleece Jacket', price=49.99
+2026-01-15 00:53:47 [INFO] u.LoggerUtil - AFTER SCENARIO HOOK CALLED:
+2026-01-15 00:53:47 [ERROR] u.LoggerUtil - Scenario failed: Standard user adds the highest priced item to the cart
+2026-01-15 00:53:48 [INFO] u.LoggerUtil - Screenshot saved at: /Users/omapayi/Downloads/com.saucedemo/screenshots/Standard user adds the highest priced item to the cart_20260115005347.png
+2026-01-15 00:53:58 [INFO] u.LoggerUtil - WebDriver quit successfully for thread.

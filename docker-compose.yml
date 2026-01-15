@@ -1,0 +1,44 @@
+services:
+  selenium-hub:
+    image: selenium/hub:4.29.0
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"
+
+  chrome:
+    image: selenium/node-chrome:4.29.0
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+
+  firefox:
+    image: selenium/node-firefox:4.29.0
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+
+  cucumber-tests:
+    build: .
+    container_name: cucumber-tests
+    depends_on:
+      - selenium-hub
+      - chrome
+      - firefox
+    environment:
+      - USE_REMOTE_DRIVER=true
+      - HUB_HOST=selenium-hub
+
+      - BROWSER=chrome
+      - HEADLESS=true
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: ["mvn", "-q", "clean", "test"]

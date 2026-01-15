@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- Log File Paths -->
+    <property name="LOG_FILE" value="test.log"/>
+    <property name="ERROR_FILE" value="error.log"/>
+    <property name="ROOT_DIR" value="logfiles"/>
+
+    <!-- Console Appender -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss} [%level] %logger{10} - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+    </appender>
+
+    <!-- File Appender (Logs INFO and above) with append="false" -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender" append="false">
+        <file>${ROOT_DIR}/${LOG_FILE}</file>
+        <append>false</append>
+        <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss} [%level] %logger{10} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Error File Appender (Logs only ERROR messages) with append="false" -->
+    <appender name="ERROR_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${ROOT_DIR}/${ERROR_FILE}</file>
+        <append>false</append>
+        <encoder>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss} [%level] %logger{10} - %msg%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>ERROR</level>
+        </filter>
+    </appender>
+
+    <!-- Root Logger Configuration -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+        <appender-ref ref="ERROR_FILE"/>
+    </root>
+
+</configuration>
