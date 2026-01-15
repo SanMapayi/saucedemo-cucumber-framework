@@ -5,7 +5,7 @@ This repository contains a **UI automation framework** built to demonstrate clea
 The project automates a key SauceDemo user journey:
 > **Login → identify the highest priced product (without using sort) → add to cart → validate cart contents**
 
-This framework was designed with **clarity and maintainability** in mind with comments
+This framework was designed with **clarity and maintainability** in mind. Intentionally applies a mix of well-known design patterns and commented to improve readability and easy to follow.
 
 ---
 
@@ -33,6 +33,57 @@ This framework was designed with **clarity and maintainability** in mind with co
   - Read like test scenarios
 
 ---
+
+
+## Browser Configuration & Cross-Browser Testing
+
+### Chrome Password Manager (Disabled Intentionally)
+
+Chrome’s built-in password manager and credential prompts are explicitly disabled when running tests.
+
+These prompts can:
+- Appear unexpectedly after login actions
+- Overlay UI elements
+- Intercept focus and clicks
+- Cause false negatives and flaky failures
+
+To ensure stable and deterministic test execution, Chrome is started with preferences that disable:
+- Password save prompts
+- Credential leak detection
+
+This configuration is applied automatically via browser options and requires no manual intervention.
+
+---
+
+### Supported Browsers
+
+The framework supports cross-browser execution using the following browsers:
+
+- **Chrome**  
+  Primary browser for both local and Selenium Grid execution
+
+- **Firefox**  
+  Supported locally and via Selenium Grid for cross-browser validation
+
+- **Edge**  
+  Supported locally (headless and headed modes)
+
+- **Safari**  
+  Supported for **local macOS execution only**  
+  *(Safari cannot run inside Docker containers)*
+
+Cross-browser execution is enabled without code changes by configuring the browser value or environment variables.
+
+---
+
+### Selenium Grid Execution
+
+When running via Docker and Selenium Grid, tests are executed on:
+- Chrome
+- Firefox
+
+This allows the same scenarios to be validated across multiple browsers in a consistent environment.
+
 
 ### No Sorting Used
 The highest priced item is identified by:
@@ -188,18 +239,29 @@ headless=false
 windowSize=maximize
 ```
 ---
-# RUN CODE (BASH)
+## RUN CODE (BASH)
 ```bash
 mvn clean test
 ```
+---
+## Test Results & Artefacts
+
+Test execution results are generated automatically by Maven Surefire and can be found under:
+target/surefire-reports/
+
+These reports include scenario execution status, failures, and stack traces.
+
+When a scenario fails, additional artefacts are produced:
+- **Screenshots** are captured automatically and saved under the `screenshots/` directory
+- **Execution logs** are written to the `logfiles/` directory
+
 ---
 ## Observing Failure Handling
 
 To demonstrate failure handling (error logging and screenshot capture),
 an optional tagged scenario is included.
 
-Running scenarios with the optional failure tag will intentionally trigger
-a failure:
+Running scenarios with the optional tag, using the usernames and password (on the login page), where in some case the happy path scenario failed:
 - Screenshot capture on failure
 - Error logging behaviour
 - Test reporting via Maven Surefire
@@ -209,11 +271,12 @@ This scenario is tagged as optional in the feature file using scenario outline t
 
 
 ---
-Run Tests with Docker & Selenium Grid
-Prerequisites
-Docker Desktop installed and running
+## Run Tests with Docker & Selenium Grid
+**Prerequisites**
 
-Default run (Chrome on Grid)
+- Docker Desktop installed and running
+
+- Default run (Chrome on Grid)
 ```bash
 docker compose up --build
 ```
@@ -229,6 +292,12 @@ docker compose run cucumber-tests \
 # Selenium Grid UI
 While Docker is running, the Grid can be viewed at:
 http://localhost:4444
+
+---
+## Final Notes
+
+This framework focuses on demonstrating clean automation design, clear test intent, and stable cross-browser execution.
+
 
 
 
