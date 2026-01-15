@@ -20,9 +20,13 @@ Feature: Add highest priced item to cart
     And I add the selected item to the cart
     Then the cart should contain the selected highest priced item
 
+
     Examples:
       | username                |
-      | standard_user          |
+      | standard_user           |
       | performance_glitch_user |
-      | error_user             |
-      | visual_user            |
+      | error_user              |
+      | visual_user             |
+      | problem_user            |
+      | locked_out_user         |
+

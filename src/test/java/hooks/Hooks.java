@@ -34,7 +34,7 @@ public class Hooks {
 
     @Before
     public void beforeScenario(Scenario scenario) {
-        logger.info(">> BEFORE SCENARIO HOOK CALLED:");
+        logger.info("BEFORE SCENARIO HOOK CALLED:");
         ActionMethods.setScenario(scenario);
         GetMethods.setScenario(scenario);
         logger.info("Starting scenario: {}", scenario.getName());

@@ -1,1 +1,4 @@
-2026-01-15 00:53:47 [ERROR] u.LoggerUtil - Scenario failed: Standard user adds the highest priced item to the cart
+2026-01-15 02:32:26 [ERROR] u.LoggerUtil - Scenario failed: Other users add the highest priced item to the cart
+2026-01-15 02:32:30 [ERROR] u.LoggerUtil - Scenario failed: Other users add the highest priced item to the cart
+2026-01-15 02:32:33 [ERROR] u.LoggerUtil - Scenario failed: Other users add the highest priced item to the cart
+2026-01-15 02:32:56 [ERROR] u.LoggerUtil - Scenario failed: Other users add the highest priced item to the cart

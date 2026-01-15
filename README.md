@@ -193,6 +193,22 @@ windowSize=maximize
 mvn clean test
 ```
 ---
+## Observing Failure Handling
+
+To demonstrate failure handling (error logging and screenshot capture),
+an optional tagged scenario is included.
+
+Running scenarios with the optional failure tag will intentionally trigger
+a failure:
+- Screenshot capture on failure
+- Error logging behaviour
+- Test reporting via Maven Surefire
+
+This scenario is tagged as optional in the feature file using scenario outline to inject data.
+
+
+
+---
 Run Tests with Docker & Selenium Grid
 Prerequisites
 Docker Desktop installed and running

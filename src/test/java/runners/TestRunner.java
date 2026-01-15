@@ -11,7 +11,7 @@ import io.cucumber.testng.CucumberOptions;
                 "html:target/cucumber-report.html"
         },
         monochrome = true,
-        tags = "@required"
+        tags = "@required or @optional"
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
 }
