@@ -41,7 +41,7 @@ public class TestBase {
     private static ChromeOptions buildChromeOptions(boolean headless) {
         ChromeOptions options = new ChromeOptions();
 
-        // Headless (new mode recommended for recent Chrome)
+        // Headless (for recent Chrome)
         if (headless) {
             options.addArguments("--headless=new");
         }
@@ -49,11 +49,10 @@ public class TestBase {
         // Stability for Docker/Linux
         options.addArguments("--no-sandbox", "--disable-dev-shm-usage");
 
-        // Use a clean-ish browsing context to avoid persisted password manager state
+        // To user a new browsing context to avoid persisted password manager state
         options.addArguments("--incognito");
 
         // Attempt to suppress password manager / breach/leak detection UI
-        // (Chrome flags vary by version; this combo is commonly effective)
         options.addArguments("--disable-features=PasswordLeakDetection,AutofillServerCommunication");
         options.addArguments("--disable-save-password-bubble");
 

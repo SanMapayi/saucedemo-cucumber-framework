@@ -21,6 +21,12 @@ This framework was designed with **clarity and maintainability** in mind. Intent
 
 ---
 
+### Prerequisites
+- Java 23 installed
+- Maven installed
+- Browser installed (Chrome / Firefox / Safari)
+---
+
 ## Design Decisions
 
 ### Page Objects and Step Definitions
@@ -34,75 +40,8 @@ This framework was designed with **clarity and maintainability** in mind. Intent
 
 ---
 
-
-## Browser Configuration & Cross-Browser Testing
-
-### Chrome Password Manager (Disabled Intentionally)
-
-Chrome’s built-in password manager and credential prompts are explicitly disabled when running tests.
-
-These prompts can:
-- Appear unexpectedly after login actions
-- Overlay UI elements
-- Intercept focus and clicks
-- Cause false negatives and flaky failures
-
-To ensure stable and deterministic test execution, Chrome is started with preferences that disable:
-- Password save prompts
-- Credential leak detection
-
-This configuration is applied automatically via browser options and requires no manual intervention.
-
----
-
-### Supported Browsers
-
-The framework supports cross-browser execution using the following browsers:
-
-- **Chrome**  
-  Primary browser for both local and Selenium Grid execution
-
-- **Firefox**  
-  Supported locally and via Selenium Grid for cross-browser validation
-
-- **Edge**  
-  Supported locally (headless and headed modes)
-
-- **Safari**  
-  Supported for **local macOS execution only**  
-  *(Safari cannot run inside Docker containers)*
-
-Cross-browser execution is enabled without code changes by configuring the browser value or environment variables.
-
----
-
-### Selenium Grid Execution
-
-When running via Docker and Selenium Grid, tests are executed on:
-- Chrome
-- Firefox
-
-This allows the same scenarios to be validated across multiple browsers in a consistent environment.
-
-
-### No Sorting Used
-The highest priced item is identified by:
-1. Iterating through all product cards
-2. Extracting price text from each item
-3. Comparing values programmatically
-
-This satisfies the requirement to **avoid using the sort dropdown**.
-
----
-
-### Immutable Test Data
-Selected product data (index, name, price) is stored using an immutable record:
-ProductInfo(index, name, price)
+# Project Structure
 ```java
-
-
-
-Project Structure
 com.saucedemo (cucumber-framework)
 │
 ├── .idea/
@@ -222,12 +161,76 @@ com.saucedemo (cucumber-framework)
 
 
 ```
+
+
+
+## Browser Configuration & Cross-Browser Testing
+
+### Chrome Password Manager (Disabled Intentionally)
+
+Chrome’s built-in password manager and credential prompts are explicitly disabled when running tests.
+
+These prompts can:
+- Appear unexpectedly after login actions
+- Overlay UI elements
+- Intercept focus and clicks
+- Cause false negatives and flaky failures
+
+To ensure stable and deterministic test execution, Chrome is started with preferences that disable:
+- Password save prompts
+- Credential leak detection
+
+This configuration is applied automatically via browser options and requires no manual intervention.
+
 ---
-### Prerequisites
-- Java 23 installed
-- Maven installed
-- Browser installed (Chrome / Firefox / Safari)
+
+### Supported Browsers
+
+The framework supports cross-browser execution using the following browsers:
+
+- **Chrome**  
+  Primary browser for both local and Selenium Grid execution
+
+- **Firefox**  
+  Supported locally and via Selenium Grid for cross-browser validation
+
+- **Edge**  
+  Supported locally (headless and headed modes)
+
+- **Safari**  
+  Supported for **local macOS execution only**  
+  *(Safari cannot run inside Docker containers)*
+
+Cross-browser execution is enabled without code changes by configuring the browser value or environment variables.
+
 ---
+
+### Selenium Grid Execution
+
+When running via Docker and Selenium Grid, tests are executed on:
+- Chrome
+- Firefox
+
+This allows the same scenarios to be validated across multiple browsers in a consistent environment.
+
+
+### No Sorting Used
+The highest priced item is identified by:
+1. Iterating through all product cards
+2. Extracting price text from each item
+3. Comparing values programmatically
+
+This satisfies the requirement to **avoid using the sort dropdown**.
+
+---
+
+### Immutable Test Data
+Selected product data (index, name, price) is stored using an immutable record:
+ProductInfo(index, name, price)
+
+
+---
+
 ### `config.properties` (Local execution)
 ```properties
 browser=safari
