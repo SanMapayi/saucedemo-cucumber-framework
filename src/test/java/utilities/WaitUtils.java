@@ -55,15 +55,18 @@ public class WaitUtils {
 
     public WebElement fluentWait(By locator, int timeoutSec, int pollingSec) {
 
-        Wait<WebDriver> fluentWait = new FluentWait<>(driver)
-                .withTimeout(Duration.ofSeconds(timeoutSec))
-                .pollingEvery(Duration.ofSeconds(pollingSec))
-                .ignoring(NoSuchElementException.class)
-                .ignoring(StaleElementReferenceException.class)
-                .ignoring(ElementClickInterceptedException.class);
-
-        return fluentWait.until(driver -> driver.findElement(locator));
-    }
+          return new FluentWait<>(driver)
+            .withTimeout(Duration.ofSeconds(timeoutSec))
+            .pollingEvery(Duration.ofMillis(pollingSec))
+            .ignoring(NoSuchElementException.class)
+            .ignoring(StaleElementReferenceException.class)
+            .ignoring(ElementClickInterceptedException.class)
+            .until(driver -> {
+                WebElement element = driver.findElement(locator);
+                return element.isDisplayed() ? element : null;
+            });
+}
+        
 
     // Fluent wait for custom condition
     public <T> T fluentWaitForCondition(Function<WebDriver, T> condition,
